@@ -4,9 +4,6 @@
 + 🟩generator for primes number
 + 🟨encrypting text
 
-
-+ ❗ Generator work slowly for 1024 bit keys
-
 | n-bits | avg time for one key gen | cycles |
 | --- | --- | --- |
 | 256 | 45.6 s | 10 |
