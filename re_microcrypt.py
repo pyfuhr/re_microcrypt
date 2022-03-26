@@ -18,12 +18,12 @@ class PubK():
     def __init__(self, e, n):
         self.e = e
         self.n = n
-    def crypt(self, text):
+    def encrypt(self, text):
         return pow(text, self.e, self.n)
 
 class PrivK():
     def __init__(self, d, n):
         self.d = d
         self.n = n
-    def encrypt(self, etext):
+    def decrypt(self, etext):
         return pow(etext, self.d, self.n)
