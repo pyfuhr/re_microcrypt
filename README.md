@@ -6,12 +6,15 @@
 
 | n-bits | avg time for one key gen | cycles |
 | --- | --- | --- |
+| 32 | 11.4 | 10 |
+| 64 | 12.2 s | 10 |
+| 128 | 15.5 s | 10 |
 | 256 | 45.6 s | 10 |
 
 ## Usage
 ```python
 from re_microcrypt import RSA
-a = RSA(256)
+a = RSA(256)  
 private = a.privk
 public = a.pubk
 
