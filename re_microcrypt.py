@@ -1,7 +1,6 @@
-from num_sublib import gcd, modinv, generatePrime
+from num_sublib import gcd, modinv, generatePrime, ext_randint
 from binascii import a2b_base64 as from_b64
 from binascii import b2a_base64 as to_b64
-
 
 class RSA():
     '''
@@ -29,6 +28,7 @@ class RSA():
         self.privk = RSAPrivK(self.d, self.n)
 
 def del0(s):
+    '''delete zeros'''
     k = 0
     for i in range(len(s)):
         if s[i] == 0:
@@ -156,4 +156,15 @@ class RSAPrivK:
 
         return RSAPrivK(int.from_bytes(from_b64(b64_d), 'big'),
             int.from_bytes(from_b64(b64_n), 'big'))
+    
+def xor_bytes(s, key, enc):
+    r = b''
+    sT = (s if enc else from_b64(s))
+    if len(sT) % len(key):
+        sT += ext_randint(0, 2**(8*((len(key)-len(sT)%len(key))))-1).to_bytes(len(key)-(len(sT)%len(key)), 'big')
+    for i in range(len(sT)//len(key)):
+        for j in range(len(key)):
+            r += int.to_bytes(sT[i*len(key)+j]^key[j], 1, 'big')
+            
+    return to_b64(r) if enc else r
 
