@@ -25,3 +25,5 @@ signed_data = a.privk.sign(hashedData=sha256(b'mumei').digest())
 print(a.pubk.check(signed_data, hashedData=sha256(b'mumei').digest()))
 >>> True
 ```
+
+*tested at Raspberry Pi Pico Board RP2040 by WeAct Studio
