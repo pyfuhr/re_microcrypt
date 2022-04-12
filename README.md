@@ -2,7 +2,7 @@
 ## RSA on microcontroler
 + 🟩random for numbers >= 2*31
 + 🟩generator for primes number
-+ 🟨encrypting text
++ 🟩encrypting bytes
 
 | n-bits | avg time for one key gen | cycles |
 | --- | --- | --- |
@@ -13,11 +13,13 @@
 
 ## Usage
 ```python
-from re_microcrypt import RSA
-a = RSA(256)  
-private = a.privk
-public = a.pubk
-
-enc_mes = public.encrypt(33)
-private.decrypt(enc_mes) # return 33
+from re_microcrypt import RSA, RSAPubK
+from hashlib import sha256
+rsa = RSA(ln=128)
+encdata = a.pubk.encrypt(b'hi')
+print(a.privk.decrypt(o))
+>>> b'hi'
+signed_data = a.privk.sign(hashedData=sha256(b'mumei').digest())
+print(a.pubk.check(signed_data, hashedData=sha256(b'mumei').digest()))
+>>> True
 ```
