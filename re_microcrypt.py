@@ -50,7 +50,7 @@ class RSAPubK:
         text = int.from_bytes(text, 'big')
         return del0(int.to_bytes(pow(text, self.e, self.n), 1024, 'big'))
     
-    def check(self, text, data=None, hashfunc=None, hashedData=None):
+    def check(self, etext, data=None, hashfunc=None, hashedData=None):
         '''
         compare sender and your sign
         
@@ -61,10 +61,10 @@ class RSAPubK:
         hashedData equals hashfunc(data)
         '''
         if not (data is None) and not (hashfunc is None):
-            if self.encrypt(text) == hashfunc(data): return True
+            if self.encrypt(etext) == hashfunc(data): return True
             else: return False
         if not (hashedData is None):
-            if self.encrypt(text) == hashedData: return True
+            if self.encrypt(etext) == hashedData: return True
             else: return False
         raise ValueError('Not enought args: text + (data+hashfunc or hashedData)')
 
@@ -160,11 +160,13 @@ class RSAPrivK:
 def xor_bytes(s, key, enc):
     r = b''
     sT = (s if enc else from_b64(s))
+    ln = 0
     if len(sT) % len(key):
-        sT += ext_randint(0, 2**(8*((len(key)-len(sT)%len(key))))-1).to_bytes(len(key)-(len(sT)%len(key)), 'big')
+        sT += ext_randint(0, 2**(8*((len(key)-len(sT)%len(key))))-1).to_bytes(ln:=(len(key)-(len(sT)%len(key))), 'big')
     for i in range(len(sT)//len(key)):
         for j in range(len(key)):
             r += int.to_bytes(sT[i*len(key)+j]^key[j], 1, 'big')
-            
+    if ln:        
+        r = r[:-ln]
     return to_b64(r) if enc else r
 
