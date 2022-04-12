@@ -13,8 +13,8 @@ class RSA():
         self.f = (self.p-1)*(self.q-1)
         self.e = 65537
         self.d = modinv(self.e, self.f)
-        self.pubk = PubK(self.e, self.n)
-        self.privk = PrivK(self.d, self.n)
+        self.pubk = RSAPubK(self.e, self.n)
+        self.privk = RSAPrivK(self.d, self.n)
 
 def del0(s):
     k = 0
@@ -56,3 +56,4 @@ class RSAPrivK:
 
     def __str__(self):
         return str({'d': self.d, 'n': self.n})
+
