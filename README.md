@@ -4,6 +4,7 @@
 + 🟩generator for primes number
 + 🟩encrypting bytes (RSA)
 + 🟩signing data (RSA)
++ 🟩encrypting bytes (xor)
 + 🟨make recrypt certificate(only RSAPrivK)
 
 | n-bits | avg time for one key gen | cycles |
