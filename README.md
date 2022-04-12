@@ -17,7 +17,7 @@ from re_microcrypt import RSA, RSAPubK
 from hashlib import sha256
 rsa = RSA(ln=128)
 encdata = a.pubk.encrypt(b'hi')
-print(a.privk.decrypt(o))
+print(a.privk.decrypt(encdata))
 >>> b'hi'
 signed_data = a.privk.sign(hashedData=sha256(b'mumei').digest())
 print(a.pubk.check(signed_data, hashedData=sha256(b'mumei').digest()))
