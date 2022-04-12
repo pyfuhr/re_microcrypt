@@ -1,8 +1,7 @@
 import random
 import time
 
-
-def egcd(a, b):
+def extgcd(a, b):
     if a == 0:
         return (b, 0, 1)
     else:
@@ -10,9 +9,9 @@ def egcd(a, b):
         return (g, x - (b // a) * y, y)
 
 def modinv(a, m):
-    g, x, y = egcd(a, m)
+    g, x, y = extgcd(a, m)
     if g != 1:
-        raise Exception('modular inverse does not exist')
+        raise Exception('modular inverse doesnt exist')
     else:
         return x % m
 
@@ -72,23 +71,23 @@ def div_to_anyList(n:int, l:list):
 
 def generatePrime(n: int, primes=None, s=None):
     limit = 2**n
-    if primes is None: primes=getPrimesToN(10000)
-    if s is None: s=primes[-1]
+    if primes is None: primes= getPrimesToN(1000)
+    if s is None: s= primes[-1]
     while s < limit:
-        low, high = (s+1)>>1, (s<<1)+1
+        low, high = (s+1) >> 1, (s << 1)+1
         while True:
             r = ext_randint(low, high) << 1
             n = s * r + 1
-            if div_to_anyList(n, primes): continue
+            #if div_to_anyList(n, primes): continue
             while True:
                 a = ext_randint(2, n-1)
-                if pow(a, n-1, n)!=1:break
-                d=gcd((pow(a, r, n)-1)%n, n)
-                if d!=n:
-                    if d==1: s = n
+                if pow(a, n-1, n) != 1: break # тест простоты Ферма
+                d = gcd((pow(a, r, n)-1) % n, n) # критерий Поклингтона
+                if d != n:
+                    if d == 1: s = n
                     break
-            if s==n:break
-    return s 
+            if s == n: break
+    return s
 
 millis = int(round(time.time()))
 random.seed(millis)
