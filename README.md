@@ -1,12 +1,18 @@
-# RSA for micropython
-## RSA on microcontroler
+# Cryptography for micropython
 + 🟩random for numbers >= 2*31
-+ 🟩generator for primes number
-+ 🟩encrypting bytes (RSA)
-+ 🟩signing data (RSA)
-+ 🟩encrypting bytes (xor)
-+ 🟨make recrypt certificate(only RSAPrivK)
++ 🟩generator for primes number(using 
++ 🟩publik key encrypting data (RSA)
++ 🟩signing data (RSA, ECDSA)
++ 🟩xor data encrypting(base64)
++ 🟩recrypt certificate(RSAPrivK)
++ 🟨make recrypt certificate(RSAPubK)
++ 🟧Diffie–Hellman protocol
++ 🟧AES, DES, RC4
++ 🟧work with polynomials, finite field
++ 🟥Reed–Solomon error correction
++ 🟥BCH code
 
+# RSA result
 | n-bits | avg time for one key gen | cycles |
 | --- | --- | --- |
 | 32 | 11.4 s | 10 |
