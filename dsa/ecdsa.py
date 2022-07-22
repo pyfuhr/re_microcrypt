@@ -1,7 +1,7 @@
 import os, sys
 import random
 from hashlib import sha256
-from re_microcrypt.utils.num_sublib import ext_randint
+from re_microcrypt.utils.num_sublib import ext_randint, mod_inverse
 class Curve():
     def __init__(self, p, a, b ,G, n):
         self.p = p
@@ -24,9 +24,9 @@ class Point():
         if self is None:
             return pnt2
         if self.x == pnt2.x:
-            s:int = (3*self.x*self.x+self.curve.a)*pow(2*self.y, -1, self.curve.p)
+            s:int = (3*self.x*self.x+self.curve.a)*mod_inverse(2*self.y, self.curve.p)
         else:
-            s:int = (self.y - pnt2.y)*pow(self.x - pnt2.x, -1, self.curve.p)
+            s:int = (self.y - pnt2.y)*mod_inverse(self.x - pnt2.x, self.curve.p)
         x = (s**2 - self.x - pnt2.x) % self.curve.p
         y = -(self.y + s*(x - self.x)) % self.curve.p
         return Point(x, y, self.curve)
@@ -63,14 +63,14 @@ class Encryptor():
         assert self.privk, "private key is undefined, use \"generate\" to define it."
         return self.G * self.privk        
     
-    def sign(self, message):
+    def sign(self, message:bytes):
         message = int.from_bytes(sha256(message).digest(), sys.byteorder)
         r, s = 0, 0
         while not r or not s:
             k = ext_randint(1, self.G.curve.n)
             pnt = self.G*k
             r = pnt.x % self.G.curve.n
-            s = ((message + r * self.privk) * pow(k, -1, self.G.curve.n)) % self.G.curve.n
+            s = ((message + r * self.privk) * mod_inverse(k, self.G.curve.n)) % self.G.curve.n
         return Point(r, s, self.G.curve)
     
     @staticmethod
@@ -78,7 +78,7 @@ class Encryptor():
         message = int.from_bytes(sha256(message).digest(), sys.byteorder)
         G = Point(pubK.curve.G[0], pubK.curve.G[1], pubK.curve)
         r, s = signature.x, signature.y
-        w = pow(s, -1, pubK.curve.n)
+        w = mod_inverse(s, pubK.curve.n)
         u1 = (message * w) % pubK.curve.n
         u2 = (r * w) % pubK.curve.n
         
