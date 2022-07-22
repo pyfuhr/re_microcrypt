@@ -9,12 +9,20 @@ def extgcd(a, b):
         g, y, x = extgcd(b % a, a)
         return (g, x - (b // a) * y, y)
 
-def modinv(a, m):
-    g, x, y = extgcd(a, m)
-    if g != 1:
-        raise Exception('modular inverse doesnt exist')
-    else:
-        return x % m
+def mod_inverse(a, n):
+    while a < 0:
+        a += n
+    old_r, r = n, a
+    old_t, t = 0, 1
+    while r != 0:
+        quotient = old_r // r
+        old_r, r = r, old_r - quotient * r
+        old_t, t = t, old_t - quotient * t
+    if old_r > 1:
+        raise Exception('no mod inv')
+    if old_t < 0:
+        old_t += n
+    return old_t
 
 def ext_randint(a, b, step=8):
     r, q = 0, []
@@ -91,3 +99,4 @@ def generatePrime(n: int, primes=None, s=None):
 
 millis = int(round(time.time()))
 random.seed(millis)
+
