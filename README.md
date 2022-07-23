@@ -1,3 +1,5 @@
+![GitHub last commit](https://img.shields.io/github/last-commit/pyfuhr/crypto_for_micropython)
+![GitHub last commit](https://img.shields.io/badge/MicroPython-1.18/rp2040-yellow)
 # Cryptography for micropython
 + 🟩random for numbers >= 2*31
 + 🟩generator for primes number(using Pocklington primality test)
