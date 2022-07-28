@@ -6,7 +6,7 @@
 + 🟩publik key encrypting data (RSA)
 + 🟩signing data (RSA, ECDSA)
 + 🟩xor data encrypting(base64)
-+ 🟩recrypt certificate(RSAPrivK)
++ 🟨recrypt certificate(RSAPrivK)
 + 🟨make recrypt certificate(RSAPubK)
 + 🟧Diffie–Hellman protocol
 + 🟧AES, DES, RC4
@@ -26,3 +26,6 @@
 <>
 
 *tested at Raspberry Pi Pico Board RP2040 by WeAct Studio
++ 🟨 will be added soon
++ 🟧 it will be added within six months
++ 🟥 it may be added
