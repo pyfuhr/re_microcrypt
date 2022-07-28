@@ -99,4 +99,3 @@ def generatePrime(n: int, primes=None, s=None):
 
 millis = int(round(time.time()))
 random.seed(millis)
-
