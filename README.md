@@ -1,31 +1,27 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/pyfuhr/crypto_for_micropython)
-![GitHub last commit](https://img.shields.io/badge/MicroPython-1.18/rp2040-yellow)
+![GitHub last commit](https://img.shields.io/badge/MicroPython-1.19/rp2040-yellow)
+### This is dev branch
 # Cryptography for micropython
-+ 🟩random for numbers >= 2*31
-+ 🟩generator for primes number(using Pocklington primality test)
-+ 🟩publik key encrypting data (RSA)
-+ 🟩signing data (RSA, ECDSA)
-+ 🟩xor data encrypting(base64)
-+ 🟨recrypt certificate(RSAPrivK)
-+ 🟨make recrypt certificate(RSAPubK)
-+ 🟧Diffie–Hellman protocol
-+ 🟧AES, DES, RC4
-+ 🟧work with polynomials, finite field
-+ 🟥Reed–Solomon error correction
-+ 🟥BCH code
+| complited                                                           | in progress                     | will be added           | may be added |
+|---------------------------------------------------------------------|---------------------------------|-------------------------|--------------|
+| 🟦random for numbers >= 2*31                                        | 🟧GF256                         | recrypt certificate     | BCH code     |
+| 🟦generator for primes number<br>(using Pocklington primality test) | 🟥AES                           | Diffie–Hellman protocol |              |
+| 🟦publik key encrypting data (RSA)                                  | 🟥Reed–Solomon error correction | DES                     |              |
+| 🟦signing data (RSA, ECDSA)                                         |                                 | RC4                     |              |
+| 🟦xor data encrypting(base64)                                       |                                 |                         |              |
+| 🟦work with polynomials                                             |                                 |                         |              |
 
-# RSA result*
-| n-bits | avg time for one key gen | cycles |
-| --- | --- | --- |
-| 32 | 11.4 s | 10 |
-| 64 | 12.2 s | 10 |
-| 128 | 15.5 s | 10 |
-| 256 | 45.6 s | 10 |
-
+##Installaion
+1. clone repo to your pc
+2. using thony and copy repo at /lib
 ## Usage
-<>
 
-*tested at Raspberry Pi Pico Board RP2040 by WeAct Studio
-+ 🟨 will be added soon
-+ 🟧 it will be added within six months
-+ 🟥 it may be added
+## Comments
+- 🟦 - finished
+- 🟩 - testing
++ in progress
++ 🟨 - finishing
++ 🟧 - developing
++ 🟥 - just some ideas
+<!-- 🟥🟧🟨🟩🟦-->
+<!--  -->
