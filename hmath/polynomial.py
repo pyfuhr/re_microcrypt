@@ -50,27 +50,27 @@ class Polynomial:
 		mx = max(len(self), len(other))
 		for index in range(mx):
 			ret.append(self[index-mx]+other[index-mx])
-		return Polynomial(ret, trunc=True)
+		return self.__class__(ret, trunc=True)
 
 	def __xor__(self, other):
 		ret = []
 		mx = max(len(self), len(other))
 		for index in range(mx):
 			ret.append(self[index-mx]^other[index-mx])
-		return Polynomial(ret, trunc=True)
+		return self.__class__(ret, trunc=True)
 
 	def __sub__(self, other):
 		ret = []
 		mx = max(len(self), len(other))
 		for index in range(mx):
 			ret.append(self[index-mx]-other[index-mx])
-		return Polynomial(ret, trunc=True)
+		return self.__class__(ret, trunc=True)
 
 	def __mul__(self, other):
 		if type(other) in (int, float):
 			c = self._getitems()
 			c = list(map(lambda x: x*other, c))
-			return Polynomial(c)
+			return self.__class__(c)
 		else:
 			a, b = self, other
 			c = [0 for i in range(len(a)+len(b)-1)]
@@ -78,13 +78,13 @@ class Polynomial:
 				for indexb, itemb in enumerate(b._getitemsr()):
 					c[indexa+indexb] += itema*itemb
 			c.reverse()
-			return Polynomial(c)
+			return self.__class__(c)
 
 	def __divmod__(self, other):
 		a = self
 		b = other
 		c = a
-		d = Polynomial([])
+		d = self.__class__([])
 		for i in range(len(a)-len(b)+1):
 			d = d << 1
 			if not self.__can_del(c, b):
@@ -109,7 +109,7 @@ class Polynomial:
 		if power < 0:
 			raise NotImplementedError('just greater than 0 power')
 		if power == 0:
-			return Polynomial((0, ))
+			return self.__class__((0, ))
 		else:
 			ret = self
 			for i in range(power-1):
@@ -147,6 +147,4 @@ class Polynomial:
 		a = self._getitems()
 		for i in range(other):
 			a.append(0)
-		return Polynomial(a)
-
-print(Polynomial((3, 7, 0, 0, 0, 1)) * Polynomial((4, 1)))
+		return self.__class__(a)

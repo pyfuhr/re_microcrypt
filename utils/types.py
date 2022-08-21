@@ -28,5 +28,3 @@ class BitVector:
 
 	def __str__(self):
 		return str(self.__vector)
-
-print(BitVector(2))
