@@ -9,6 +9,7 @@ def extgcd(a, b):
         g, y, x = extgcd(b % a, a)
         return (g, x - (b // a) * y, y)
 
+
 def mod_inverse(a, n):
     while a < 0:
         a += n
@@ -23,6 +24,7 @@ def mod_inverse(a, n):
     if old_t < 0:
         old_t += n
     return old_t
+
 
 def ext_randint(a, b, step=8):
     r, q = 0, []
@@ -52,10 +54,12 @@ def ext_randint(a, b, step=8):
     if r+a>b: raise Exception('Err: rand')
     return r+a
 
+
 def gcd(a, b):
     while b:
         a, b = b, a%b
     return a
+
 
 def getPrimesToN(n:int) -> list:
     res = [2, 3]
@@ -69,6 +73,7 @@ def getPrimesToN(n:int) -> list:
         if flag: res.append(i)
     return res
 
+
 def div_to_anyList(n:int, l:list):
     flag = False
     for i in l:
@@ -76,6 +81,7 @@ def div_to_anyList(n:int, l:list):
             flag = True
             break
     return flag
+
 
 def generatePrime(n: int, primes=None, s=None):
     limit = 2**n
@@ -96,6 +102,7 @@ def generatePrime(n: int, primes=None, s=None):
                     break
             if s == n: break
     return s
+
 
 millis = int(round(time.time()))
 random.seed(millis)
