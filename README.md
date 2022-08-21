@@ -13,7 +13,8 @@
 | --                                                                  |                                 |                         |              |
 ## Installaion
 1. Clone repo to your pc
-2. Use thonny and copy repo folder at /lib on your microcontroller
+2. Rename repo folder to "re_microcrypt"
+3. Use thonny and copy this folder at /lib on your microcontroller
 
 ## Comments
 #### Complited
