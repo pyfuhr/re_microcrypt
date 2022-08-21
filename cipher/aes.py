@@ -1,1 +1,1 @@
-from ucryptolib import AES
+from ucryptolib import aes
