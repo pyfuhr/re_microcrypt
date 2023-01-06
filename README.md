@@ -1,6 +1,6 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/pyfuhr/crypto_for_micropython)
 ![GitHub last commit](https://img.shields.io/badge/MicroPython-1.19/rp2040-yellow)
-### This is dev branch
+### This is main branch
 # Cryptography for micropython, education ed.
 | complited                                                           | in progress                     | will be added           | may be added |
 |---------------------------------------------------------------------|---------------------------------|-------------------------|--------------|
